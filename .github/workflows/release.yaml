@@ -63,6 +63,9 @@ jobs:
           # Generate the Go models
           (cd cli/go && make gen)
 
+          # add generated file
+          git add cli/go/api.go
+
           # commit the changes
           git commit -m "chore: 🥁 tagging ${{ steps.TAG_UTIL.outputs.githubTag }} 🥳"
           echo "Tagging with ${{ steps.TAG_UTIL.outputs.githubTag }}"
