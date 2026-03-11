@@ -8,6 +8,7 @@ The `openapi.yaml` file describes the commands available in the Kortex CLI:
 
 - **Each path** in the specification corresponds to a CLI command
 - **Response formats** define the structure of the command output when using the `-o json` flag
+- **Input parameters** are not defined in the specification - only the output formats are documented
 
 ### Example
 
@@ -100,6 +101,6 @@ $ kortex-cli init -o json /tmp/not-found
 ```bash
 $ kortex-cli workspace remove unknown-id -o json
 {
-  "error": "Error: workspace not found: aze"
+  "error": "Error: workspace not found: unknown-id"
 }
 ```
