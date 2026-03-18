@@ -17,6 +17,42 @@ components:
   schemas:
     WorkspaceConfiguration:
       type: object
+      additionalProperties: false
+      properties:
+        mounts:
+          $ref: '#/components/schemas/Mounts'
+        environment:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnvironmentVariable'
+
+    Mounts:
+      type: object
+      additionalProperties: false
+      properties:
+        dependencies:
+          type: array
+          items:
+            type: string
+          description: List of additional source directories to mount, with paths relative to the sources directory of the project (useful when working with git worktrees)
+        configs:
+          type: array
+          items:
+            type: string
+          description: List of home directories to mount, with paths relative to the HOME directory of the user
+
+    EnvironmentVariable:
+      type: object
+      additionalProperties: false
+      required:
+        - name
       properties:
         name:
           type: string
+          description: Name of the environment variable
+        value:
+          type: string
+          description: Value of the environment variable (mutually exclusive with secret)
+        secret:
+          type: string
+          description: Name of the secret containing the value (mutually exclusive with value)
