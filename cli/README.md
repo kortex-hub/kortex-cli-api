@@ -38,7 +38,7 @@ $ kortex-cli workspace list -o json
 #### 2. Initialize a new workspace (minimal output)
 
 ```bash
-$ kortex-cli init -o json
+$ kortex-cli init --agent claude -o json
 {
   "id": "2c5f16046476be368fcada501ac6cdc6bbd34ea80eb9ceb635530c0af64681ea"
 }
@@ -47,11 +47,12 @@ $ kortex-cli init -o json
 #### 3. Initialize a new workspace (verbose output)
 
 ```bash
-$ kortex-cli init -v -o json
+$ kortex-cli init --agent claude -v -o json
 {
   "id": "2c5f16046476be368fcada501ac6cdc6bbd34ea80eb9ceb635530c0af64681ea",
   "name": "workspace1",
   "project": "https://github.com/user/repo/",
+  "agent": "claude",
   "paths": {
     "source": "/home/user/workspace1",
     "configuration": "/home/user/workspace1/.kortex"
@@ -62,11 +63,12 @@ $ kortex-cli init -v -o json
 With explicit project:
 
 ```bash
-$ kortex-cli init --project my-project -v -o json
+$ kortex-cli init --agent claude --project my-project -v -o json
 {
   "id": "2c5f16046476be368fcada501ac6cdc6bbd34ea80eb9ceb635530c0af64681ea",
   "name": "workspace1",
   "project": "my-project",
+  "agent": "claude",
   "paths": {
     "source": "/home/user/workspace1",
     "configuration": "/home/user/workspace1/.kortex"
@@ -84,6 +86,7 @@ $ kortex-cli workspace list -o json
       "id": "2c5f16046476be368fcada501ac6cdc6bbd34ea80eb9ceb635530c0af64681ea",
       "name": "workspace1",
       "project": "https://github.com/user/repo/",
+      "agent": "claude",
       "paths": {
         "source": "/home/user/workspace1",
         "configuration": "/home/user/workspace1/.kortex"
@@ -143,7 +146,7 @@ $ kortex-cli workspace remove 2c5f16046476be368fcada501ac6cdc6bbd34ea80eb9ceb635
 ##### Non-existent source directory
 
 ```bash
-$ kortex-cli init -o json /tmp/not-found
+$ kortex-cli init --agent claude -o json /tmp/not-found
 {
   "error": "Error: sources directory does not exist: /tmp/not-found"
 }
