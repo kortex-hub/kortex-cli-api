@@ -59,6 +59,8 @@ jobs:
             echo "githubTag=v$TAG_PATTERN" >> ${GITHUB_OUTPUT}
 
       - name: tag
+        env:
+          NEW_GITHUB_TAG: ${{ steps.TAG_UTIL.outputs.githubTag }}
         run: |
           git config --local user.name ${{ github.actor }}
           git config --local user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
@@ -77,9 +79,13 @@ jobs:
 
           # commit the changes
           git commit -m "chore: 🥁 tagging ${{ steps.TAG_UTIL.outputs.githubTag }} 🥳"
-          echo "Tagging with ${{ steps.TAG_UTIL.outputs.githubTag }}"
-          git tag ${{ steps.TAG_UTIL.outputs.githubTag }}
-          git push origin ${{ steps.TAG_UTIL.outputs.githubTag }}
+
+          for prefix in "" "cli/go/" "workspace-configuration/go/"
+          do
+            echo "Tagging with ${prefix}${NEW_GITHUB_TAG}"
+            git tag ${prefix}${NEW_GITHUB_TAG}
+            git push origin ${prefix}${NEW_GITHUB_TAG}
+          done
 
       - name: Create Release
         id: create_release
