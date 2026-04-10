@@ -1,6 +1,6 @@
 # kdn Types
 
-[![npm version](https://img.shields.io/npm/v/@kortex-hub/kortex-cli-api.svg)](https://www.npmjs.com/package/@kortex-hub/kortex-cli-api)
+[![npm version](https://img.shields.io/npm/v/@openkaiden/kdn-api.svg)](https://www.npmjs.com/package/@openkaiden/kdn-api)
 [![Apache-2.0](https://shields.io/badge/license-Apache%202-yellow.svg)](https://opensource.org/license/apache-2-0)
 
 TypeScript type definitions for the [kaiden cli](https://github.com/openkaiden/kdn), providing complete type safety when interacting with JSON output returned by the CLI.
@@ -8,26 +8,26 @@ TypeScript type definitions for the [kaiden cli](https://github.com/openkaiden/k
 ## Installation
 
 ```bash
-npm install @kortex-hub/kortex-cli-api
+npm install @openkaiden/kdn-api
 ```
 
 Or with your preferred package manager:
 
 ```bash
 # pnpm
-pnpm add @kortex-hub/kortex-cli-api
+pnpm add @openkaiden/kdn-api
 
 # yarn  
-yarn add @kortex-hub/kortex-cli-api
+yarn add @openkaiden/kdn-api
 
 # bun
-bun add @kortex-hub/kortex-cli-api
+bun add @openkaiden/kdn-api
 ```
 
 ## Usage
 
 ```typescript
-import type { paths, components } from '@kortex-hub/kortex-cli-api';
+import type { paths, components } from '@openkaiden/kdn-api';
 
 // Type for agents list response
 type AgentsListResponse = paths['/list']['get']['responses']['200']['content']['application/json'];
