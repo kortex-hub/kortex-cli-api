@@ -45,6 +45,14 @@ paths:
                       args: ["-y", "@microsoft/mcp-server-playwright"]
                       env:
                         VAR1: "value1"
+                network:
+                  mode: "deny"
+                  hosts:
+                    - "api.example.com"
+                    - "registry.npmjs.org"
+                  cidr:
+                    - "10.0.0.0/8"
+                    - "192.168.1.0/24"
 components:
   schemas:
     WorkspaceConfiguration:
@@ -67,6 +75,30 @@ components:
           description: List of folders containing skills (SKILL.md and related files) to be provided to the agent.
         mcp:
           $ref: '#/components/schemas/McpConfiguration'
+        network:
+          $ref: '#/components/schemas/NetworkConfiguration'
+
+    NetworkConfiguration:
+      type: object
+      additionalProperties: false
+      properties:
+        mode:
+          type: string
+          enum:
+            - allow
+            - deny
+          default: deny
+          description: Network access mode. 'allow' permits all. 'deny' blocks everything except the specified hosts/CIDRs. Defaults to 'deny'.
+        hosts:
+          type: array
+          items:
+            type: string
+          description: List of hostnames to allow in deny mode.
+        cidr:
+          type: array
+          items:
+            type: string
+          description: List of CIDR ranges to allow in deny mode.
 
     McpConfiguration:
       type: object
