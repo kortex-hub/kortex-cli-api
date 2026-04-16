@@ -50,9 +50,6 @@ paths:
                   hosts:
                     - "api.example.com"
                     - "registry.npmjs.org"
-                  cidr:
-                    - "10.0.0.0/8"
-                    - "192.168.1.0/24"
                 secrets:
                   - type: "github"
                     value: "ghp_xxxxxxxxxxxx"
@@ -114,11 +111,6 @@ components:
           items:
             type: string
           description: List of hostnames to allow in deny mode.
-        cidr:
-          type: array
-          items:
-            type: string
-          description: List of CIDR ranges to allow in deny mode.
 
     Secret:
       type: object
