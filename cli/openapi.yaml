@@ -364,7 +364,6 @@ components:
       required:
       - name
       - type
-      - description
     SecretsList:
       type: object
       additionalProperties: false
