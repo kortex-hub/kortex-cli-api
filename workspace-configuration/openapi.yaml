@@ -14,6 +14,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkspaceConfiguration'
               example:
+                description: "Backend service workspace with Node.js and database access"
                 mounts:
                   - host: "$SOURCES/../main"
                     target: "$SOURCES/../main"
@@ -66,6 +67,10 @@ components:
       type: object
       additionalProperties: false
       properties:
+        description:
+          type: string
+          maxLength: 500
+          description: Human-readable description of the workspace.
         mounts:
           type: array
           items:
